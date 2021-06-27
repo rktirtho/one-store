@@ -18,7 +18,7 @@
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
         <div class="sidebar-brand">
-            <a href="#">pro sidebar</a>
+            <a th:href="@{/}">One Store</a>
             <div id="close-sidebar">
                 <i class="fas fa-times"></i>
             </div>
@@ -68,15 +68,15 @@
                     <div class="sidebar-submenu">
                         <ul>
                             <li>
-                                <a href="#">Dashboard 1
+                                <a href="/dashboard">Dashboard 1
                                     <span class="badge badge-pill badge-success">Pro</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">Dashboard 2</a>
+                                <a href="/dashboard">Dashboard 2</a>
                             </li>
                             <li>
-                                <a href="#">Dashboard 3</a>
+                                <a href="/dashboard">Dashboard 3</a>
                             </li>
                         </ul>
                     </div>
@@ -84,7 +84,7 @@
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
-                        <span>E-commerce</span>
+                        <span>E-com Products</span>
                         <span class="badge badge-pill badge-danger">3</span>
                     </a>
                     <div class="sidebar-submenu">
@@ -95,17 +95,45 @@
                                 </a>
                             </li>
                             <li>
-                                <a th:href="@{/dashboard/orders}">Orders</a>
+                                <a th:href="@{/dashboard/orders}">New Product</a>
                             </li>
                             <li>
-                                <a th:href="@{/dashboard/customer}">Customers</a>
+                                <a th:href="@{/dashboard/orders}">In Actives</a>
                             </li>
                             <li>
-                                <a th:href="@{/dashboard/inventory}">Inventory</a>
+                                <a th:href="@{/dashboard/orders}">Removed</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>ECom Masters</span>
+<!--                        <span class="badge badge-pill badge-danger">3</span>-->
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a th:href="@{/dashboard/category}">Category
+
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/dashboard/sub-category}">Sub Sategory</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/dashboard/product-size}">Product Size</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/dashboard/brands}">Brands</a>
                             </li>
                         </ul>
                     </div>
                 </li>
+
                 <li class="sidebar-dropdown">
                     <a href="#">
                         <i class="far fa-gem"></i>
@@ -122,11 +150,41 @@
                             <li>
                                 <a href="#">Tables</a>
                             </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="far fa-gem"></i>
+                        <span>ECom Sales</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
                             <li>
-                                <a href="#">Icons</a>
+                                <a href="#">Sales</a>
                             </li>
                             <li>
-                                <a href="#">Forms</a>
+                                <a href="#">Order</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="far fa-gem"></i>
+                        <span>ECom Customers</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="#">Customers</a>
+                            </li>
+                            <li>
+                                <a href="#">Pending</a>
+                            </li>
+                            <li>
+                                <a href="#">Deleted</a>
                             </li>
                         </ul>
                     </div>
