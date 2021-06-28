@@ -35,14 +35,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .anyRequest().authenticated()
-        .and()
-        .httpBasic();
+                .antMatchers("/").permitAll()
+                .antMatchers("/dashboard").hasAnyRole("", "")
+                .antMatchers("/dashboard/products").hasRole("")
+                .antMatchers("/api/**").authenticated()
+                .and()
+                .httpBasic();
 
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
