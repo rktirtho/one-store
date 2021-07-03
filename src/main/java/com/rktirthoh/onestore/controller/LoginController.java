@@ -14,11 +14,7 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("register")
-    public String loadRegister(Model model){
-        model.addAttribute("user", new User());
-        return "signup";
-    }
+
 
     @GetMapping("forgot-password")
     public String loadForgotAccount(){

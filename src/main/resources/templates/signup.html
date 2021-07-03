@@ -16,17 +16,19 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Register</h5>
 
-                    <form class="form-signin" action="#" modelAttribute="customer" th:object="${user}" th:action="@{/register}" method="post">
+                    <form class="form-signin" action="#" modelAttribute="user" th:object="${user}"
+                          th:action="@{/registerCheckout}" method="post">
                         <div class="form-label-group">
                             <input type="text" id="inputUserame" class="form-control"
                                    placeholder="Username" required th:field="*{username}"
-                                   autofocus>
+                                   name="username" autofocus>
                             <label for="inputUserame">Username</label>
                         </div>
 
                         <div class="form-label-group">
                             <input type="email" id="inputEmail" class="form-control"
-                                   placeholder="Email address" th:field="*{email}" required/>
+                                   placeholder="Email address" th:field="*{email}"
+                                   name="email" required/>
                             <label for="inputEmail">Email address</label>
                         </div>
 
@@ -35,13 +37,14 @@
                         <div class="form-label-group">
                             <input type="password" id="inputPassword" class="form-control"
                                    placeholder="Password" th:field="*{password}"
-                                   required>
+                                   name="password" required>
                             <label for="inputPassword">Password</label>
                         </div>
 
                         <div class="form-label-group">
                             <input type="password" id="inputConfirmPassword" class="form-control"
-                                   placeholder="Password" required>
+                                   placeholder="Confirm Password" th:field="*{roles}"
+                                   name="roles" required>
                             <label for="inputConfirmPassword">Confirm password</label>
                         </div>
 
