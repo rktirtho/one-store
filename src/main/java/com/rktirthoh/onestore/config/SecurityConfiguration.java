@@ -1,15 +1,17 @@
 package com.rktirthoh.onestore.config;
 
+import com.rktirthoh.onestore.entity.user.UserPrincipalDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -17,18 +19,18 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private UserPrincipalDetailsService userPrincipalDetailsService;
+
     @Autowired
     private DataSource dataSource;
 
+    public SecurityConfiguration(UserPrincipalDetailsService userPrincipalDetailsService) {
+        this.userPrincipalDetailsService = userPrincipalDetailsService;
+    }
+
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("rktirtho").password(passwordEncoder().encode("qwert")).roles("ADMIN")
-                .and()
-                .withUser("robi").password(passwordEncoder().encode("qwert")).roles("MANAGEMENT")
-                .and()
-                .withUser("user").password(passwordEncoder().encode("qwert")).roles("USER");
+    protected void configure(AuthenticationManagerBuilder auth){
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
@@ -36,12 +38,36 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/dashboard").hasAnyRole("", "")
-                .antMatchers("/dashboard/products").hasRole("")
+                .antMatchers("/dashboard").hasAnyRole("ADMIN", "MANAGER")
+                .antMatchers("/dashboard/products").hasRole("ADMIN")
                 .antMatchers("/api/**").authenticated()
                 .and()
-                .httpBasic();
 
+                .formLogin()
+                .failureUrl("/login?error")
+                .loginProcessingUrl("/authenticateTheUser")
+                .defaultSuccessUrl("/")
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/?logout")
+                .deleteCookies("remember-me")
+                .permitAll()
+                .and()
+                .rememberMe();
+
+    }
+
+
+    @Bean
+    DaoAuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(userPrincipalDetailsService);
+
+        return daoAuthenticationProvider;
     }
 
     @Bean

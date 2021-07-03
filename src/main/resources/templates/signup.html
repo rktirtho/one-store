@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{libs/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{libs/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
 </head>
 <body>
-$END$
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-xl-5 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Register</h5>
+
+                    <form class="form-signin" action="#" modelAttribute="customer" th:object="${user}" th:action="@{/register}" method="post">
+                        <div class="form-label-group">
+                            <input type="text" id="inputUserame" class="form-control"
+                                   placeholder="Username" required th:field="*{username}"
+                                   autofocus>
+                            <label for="inputUserame">Username</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="email" id="inputEmail" class="form-control"
+                                   placeholder="Email address" th:field="*{email}" required/>
+                            <label for="inputEmail">Email address</label>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-label-group">
+                            <input type="password" id="inputPassword" class="form-control"
+                                   placeholder="Password" th:field="*{password}"
+                                   required>
+                            <label for="inputPassword">Password</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="password" id="inputConfirmPassword" class="form-control"
+                                   placeholder="Password" required>
+                            <label for="inputConfirmPassword">Confirm password</label>
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                        <hr class="my-4">
+                        Have a account? <a class="text-center mt-2 small" href="login">Sign in</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
+
 </html>
