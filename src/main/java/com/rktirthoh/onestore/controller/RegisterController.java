@@ -56,7 +56,7 @@ public class RegisterController {
             emailSenderService.sentSimpleEmail(
                     user.getEmail().trim(),
                     "Confirm your account",
-                    "http://localhost:8080/confirm/account/"+token);
+                    "https://one-store-backend.herokuapp.com/confirm/account/"+token);
 
             String massage = "A verification code sent to <b>" + user.getEmail()
                     + "</b>. Please confirm your email address by clicking this link ";
