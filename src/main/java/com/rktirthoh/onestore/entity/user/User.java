@@ -31,12 +31,16 @@ public class User {
     @Size(min = 6, max = 18)
     private String password;
 
-    @Column(scale = 1)
+    @Column(columnDefinition = "integer default '0'")
     private int active;
 
     private String roles;
 
     private String permissions;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "token_id")
+    private Token token;
 
 
 

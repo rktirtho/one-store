@@ -38,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/dashboard").hasAnyRole("ADMIN", "MANAGER")
+                .antMatchers("/dashboard").hasAnyRole("ADMIN", "MANAGER", "Sales")
                 .antMatchers("/dashboard/products").hasRole("ADMIN")
                 .antMatchers("/api/**").authenticated()
                 .and()
@@ -46,13 +46,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .failureUrl("/login?error")
                 .loginProcessingUrl("/authenticateTheUser")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/dashboard")
                 .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/?logout")
+                .logoutSuccessUrl("/login?logout")
                 .deleteCookies("remember-me")
                 .permitAll()
                 .and()
@@ -64,8 +64,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         daoAuthenticationProvider.setUserDetailsService(userPrincipalDetailsService);
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 
         return daoAuthenticationProvider;
     }
