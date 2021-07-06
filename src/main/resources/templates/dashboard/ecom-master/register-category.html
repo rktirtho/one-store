@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-        <html lang="en" xmlns:th="https://thymeleaf.org">
+<html lang="en" xmlns:th="https://thymeleaf.org">
 
-        <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description"
-        content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
-        <title>One store | Buy Everything from here</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>One store | Buy Everything from here</title>
     <head th:replace="common/nav-bar :: common-header"/>
     <link th:href="@{/css/product-list.css}" rel="stylesheet">
 
@@ -31,6 +31,15 @@
 
     <main class="page-content">
         <div class="container-fluid">
+
+            <form action="#" method="post"
+            th:action="@{/dashboard/save-category}" th:object="${category}">
+                <input type="text" th:field="*{categoryName}">
+                <input type="text" th:field="*{categoryIcon}">
+
+                <input type="submit">
+
+            </form>
 
 
 

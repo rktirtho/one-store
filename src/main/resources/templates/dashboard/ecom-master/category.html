@@ -41,10 +41,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr >
+                <tr th:each="category: ${categories}">
                     <td><img src=""/></td>
-                    <td th:text="Computer"></td>
-                    <td th:text="267"></td>
+                    <td th:text="${category.categoryName}"></td>
+                    <td th:text="${category.categoryName}"></td>
                 </tr>
                 </tbody>
             </table>
