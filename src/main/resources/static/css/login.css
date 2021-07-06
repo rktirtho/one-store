@@ -5,7 +5,7 @@
 
 body {
     background: #E0E0E0;
-    background: linear-gradient(to right, #E0E0E0, #575757);
+    background: linear-gradient(to right, #575757, #acaaaa, #575757);
 }
 
 .card-signin {

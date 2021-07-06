@@ -39,6 +39,10 @@ public class User {
 
     private String permissions;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "details_id")
+    private UserDetails userDetails;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "token_id")
     private Token token;

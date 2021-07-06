@@ -9,8 +9,8 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
     <link th:href="@{/css/dashboard-style.css}" rel="stylesheet"/>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script th:src="@{/js/dashboard-script.js}"></script>
 </head>
 <body>
@@ -262,11 +262,11 @@
             <i class="fa fa-bell"></i>
             <span class="badge badge-pill badge-warning notification">3</span>
         </a>
-        <a href="/massage">
+        <a href="/dashboard/massage">
             <i class="fa fa-envelope"></i>
             <span class="badge badge-pill badge-success notification">7</span>
         </a>
-        <a href="/settings">
+        <a href="/dashboard/settings">
             <i class="fa fa-cog"></i>
             <span class="badge-sonar"></span>
         </a>
@@ -274,9 +274,7 @@
             <form form-method="post" th:action="@{/logout}">
                 <button type="submit" class="fa fa-power-off">Logout</button>
             </form>
-            <i class="fa fa-power-off"></i>
-
-
+<!--            <i class="fa fa-power-off"></i>-->
 
 
     </div>

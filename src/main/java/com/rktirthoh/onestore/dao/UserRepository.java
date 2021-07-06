@@ -14,7 +14,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Modifying
     @Transactional
+//    MYSQL Query
 //    @Query(value = "UPDATE user INNER JOIN token ON user.token_id = token.id SET user.active = 1 where token.token = ?1", nativeQuery = true)
+//    PSQL Query
     @Query(value = "update users set active = 1 from token where users.token_id= token.id and token.token = ?1", nativeQuery = true)
     void activeUser( String token);
 

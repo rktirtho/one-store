@@ -28,4 +28,19 @@ public class DashboardController {
         return "dashboard/inventory";
     }
 
+    @GetMapping("edit-profile")
+    public String loadEditProfile(){
+        return "dashboard/settings/edit-profile";
+    }
+
+    @GetMapping("settings")
+    public String loadSetting(){
+        return "dashboard/settings/profile";
+    }
+
+    @GetMapping("change-password")
+    public String loadChangePassword(){
+        return "dashboard/settings/change-password";
+    }
+
 }
