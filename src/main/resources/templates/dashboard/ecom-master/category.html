@@ -42,17 +42,13 @@
                 </thead>
                 <tbody>
                 <tr th:each="category: ${categories}">
-                    <td><img src=""/></td>
+                    <td style="width: 50px"><img style="height: 30px; width: 30px" th:src="${'/'+category.categoryIcon}"/></td>
                     <td th:text="${category.categoryName}"></td>
-                    <td th:text="${category.categoryName}"></td>
+                    <td>234</td>
                 </tr>
                 </tbody>
             </table>
-
-
-
         </div>
-
     </main>
     <!-- page-content" -->
 </div>
